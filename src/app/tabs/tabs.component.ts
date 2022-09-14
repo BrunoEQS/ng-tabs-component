@@ -5,6 +5,7 @@ import {
   QueryList,
   AfterContentInit,
   Input,
+  HostBinding,
 } from '@angular/core';
 import { TabComponent } from '../tab/tab.component';
 
@@ -15,9 +16,12 @@ import { TabComponent } from '../tab/tab.component';
 })
 export class TabsComponent implements OnInit, AfterContentInit {
   @ContentChildren(TabComponent) tabs: QueryList<TabComponent>;
-  @Input() arrowDirection: string = '';
-  @Input() tabsDirection: string = 'horizontal';
+  @Input() tabsDirection: string = '';
   tabsClass: string = '';
+
+  @HostBinding('class') get hostClass() {
+    return `${this.tabsClass}`;
+  }
 
   constructor() {}
 
@@ -30,6 +34,10 @@ export class TabsComponent implements OnInit, AfterContentInit {
       this.selectTab(this.tabs.first);
     }
 
+    this.setTabsDirection();
+  }
+
+  setTabsDirection() {
     switch (this.tabsDirection) {
       case 'horizontal':
         this.tabsClass = 'horizontal';

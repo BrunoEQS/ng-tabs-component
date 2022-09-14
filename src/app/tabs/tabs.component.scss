@@ -1,18 +1,76 @@
-.tabs {
-  margin-bottom: 1.6rem;
-
-  &.horizontal .tabs-list {
-    flex-direction: row;
-  }
-
-  &.vertical .tabs-list {
+:host {
+  &.horizontal {
+    display: flex;
     flex-direction: column;
   }
+
+  &.vertical {
+    display: flex;
+    flex-direction: row;
+    
+    .tabs {
+      margin-right: 1.6rem;
+    }
+  }
+}
+
+.tabs {
+  margin-bottom: 1.6rem;
 }
 
 .tabs-list {
   list-style: none;
   display: flex;
+
+  &.horizontal {
+    flex-direction: row;
+  }
+
+  &.vertical {
+    flex-direction: column;
+  }
+}
+
+.tabs-list.horizontal .tabs-item {
+  &.active ::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid #0084ff;
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &:not(:last-child) {
+    margin-right: 0.4rem;
+  }
+}
+
+.tabs-list.vertical .tabs-item {
+  max-width: 18.4rem; // demo purposes
+  display: flex;
+  align-items: center;
+
+  &.active ::after {
+    content: '';
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 8px solid #0084ff;
+    width: 0;
+    height: 0;
+    position: absolute;
+    right: -23px;
+    left: unset;
+    bottom: unset;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 0.4rem;
+  }
 }
 
 .tabs-item {
@@ -42,10 +100,6 @@
 
   &.active .tabs-link {
     color: #fff;
-  }
-
-  &:not(:last-child) {
-    margin-right: 0.4rem;
   }
 }
 
