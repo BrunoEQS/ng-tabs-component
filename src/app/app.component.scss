@@ -1,0 +1,28 @@
+.container {
+  padding: 1rem;
+}
+
+.demo-link {
+  text-decoration: none;
+  color: green;
+  margin-top: 1.6rem;
+  display: block;
+}
+
+.demo-img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-top: 1.6rem;
+}
+
+.demo-btn {
+  background-color: orchid;
+  color: #fff;
+  outline: none;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.2rem;
+  margin-top: 1.6rem;
+  cursor: pointer;
+}
